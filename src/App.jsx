@@ -1,32 +1,20 @@
 import { Button, TextField } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import './App.css'
-import { useEffect, useState } from 'react'
-import { AmiiboApi } from './api/amiibo-api'
-
-const amiiboApi = new AmiiboApi()
+import { useState } from 'react'
+import { useAmiibo } from './contexts/AmiiboContext';
 
 function App() {
   const [searchValue, setSearchValue] = useState('')
   const [searcInputError, setSearchInputError] = useState(null)
-
-  useEffect(() => {
-    fetchAmiibos()
-  }, [])
-
-  async function fetchAmiibos() {
-    console.log(await amiiboApi.getAmiibos())
-  }
-
-  async function searchAmiibos() {
-    console.log(await amiiboApi.searchAmiibos('luigi'))
-  }
+  const { amiibos, selectedAmiibo, selectAmiibo, searchAmiibos, resetSearch, loading } = useAmiibo()
 
   function onChangeTextField(event) {
     setSearchValue(event.target.value)
   }
 
   function onClickSearchButton() {
+    console.log(amiibos)
     setSearchInputError('Valor não deve ser nulo')
     searchAmiibos(searchValue)
   }
@@ -52,6 +40,7 @@ function App() {
           id="search-button"
           variant="outlined"
           size='large' style={{ padding: 0, height: 56, fontSize: 30 }}
+          loading={loading}
           onClick={onClickSearchButton}
           disableElevation
         >
