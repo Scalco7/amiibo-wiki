@@ -19,12 +19,15 @@ export const AmiiboProvider = ({ children }) => {
 
     const fetchAmiibos = async () => {
         try {
+            setLoading(true);
             const data = await amiiboApi.getAmiibos();
             console.log(data)
             setAmiibos(data);
             allAmiibos = data;
         } catch (e) {
             setError(e);
+        } finally {
+            setLoading(false);
         }
     };
 

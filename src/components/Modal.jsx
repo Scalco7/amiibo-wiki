@@ -42,6 +42,6 @@ export default function Modal({ open, onClose, amiibo }) {
         </Button>
       </DialogActions>
     </Dialog>,
-    document.getElementById("modal-root") // 👈 ainda usamos o portal explicitamente
+    document.getElementById("modal-root")
   );
 }

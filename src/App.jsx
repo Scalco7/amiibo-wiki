@@ -1,10 +1,9 @@
 import { Button, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import "./App.css";
-import { useState, Suspense, lazy } from "react";
+import { useState, Suspense } from "react";
 import { useAmiibo } from "./contexts/AmiiboContext";
-
-const AmiiboList = lazy(() => import("./contexts/AmiiboList"));
+import AmiiboList from "./components/AmiiboList";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
