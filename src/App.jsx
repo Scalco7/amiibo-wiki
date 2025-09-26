@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import "./App.css";
-import { useState, Suspense } from "react";
+import { useState } from "react";
 import { useAmiibo } from "./contexts/AmiiboContext";
 import AmiiboList from "./components/AmiiboList";
 
@@ -51,10 +51,7 @@ function App() {
           <SearchIcon fontSize="inherit" />
         </Button>
       </div>
-
-      <Suspense fallback={<p>Carregando lista...</p>}>
         <AmiiboList />
-      </Suspense>
     </main>
   );
 }

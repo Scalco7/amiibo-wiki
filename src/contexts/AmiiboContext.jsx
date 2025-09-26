@@ -20,8 +20,7 @@ export const AmiiboProvider = ({ children }) => {
     const fetchAmiibos = async () => {
         try {
             setLoading(true);
-            const data = await amiiboApi.getAmiibos();
-            console.log(data)
+            const data = (await amiiboApi.getAmiibos()).slice(0, 100);
             setAmiibos(data);
             allAmiibos = data;
         } catch (e) {
@@ -34,7 +33,7 @@ export const AmiiboProvider = ({ children }) => {
     const searchAmiibos = async (searchValue) => {
         try {
             setLoading(true);
-            const data = await amiiboApi.searchAmiibos(searchValue);
+            const data = (await amiiboApi.searchAmiibos(searchValue)).slice(0, 100);
             setAmiibos(data);
         } catch (e) {
             console.log(e)
