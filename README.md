@@ -70,6 +70,12 @@ npm run build
 npm run preview
 ```
 
+### 6. Deploy para o servidor web
+
+```bash
+npm run deploy
+```
+
 
 ## 📝 Funcionalidades Implementadas
 
